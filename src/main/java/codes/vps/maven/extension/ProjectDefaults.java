@@ -31,7 +31,7 @@ public class ProjectDefaults extends AbstractMavenLifecycleParticipant implement
 
     private Logger logger;
 
-    public static final String ALT_USER_SETTINGS_XML_LOCATION = "codes.vps.maven.ext.project-default";
+    public static final String ALT_USER_SETTINGS_XML_LOCATION = "codes.vps.mvn-project-default";
 
     @Requirement(role = ArtifactRepositoryLayout.class)
     private ArtifactRepositoryLayout repoLayout;
