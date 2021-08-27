@@ -127,64 +127,80 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-
-                <plugin>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <detectJavaApiLink />
-                        <detectLinks />
-                    </configuration>
-                </plugin>
-
                 <plugin>
                     <groupId>org.sonatype.plugins</groupId>
                     <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <serverId>maven.central</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                    </configuration>
+                    <version>1.6.8</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.3.0</version>
                 </plugin>
 
-                <plugin>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <configuration>
-                        <tagNameFormat>v@{project.version}</tagNameFormat>
-                        <!--
-                          You must have a "mvn-project-default.sign" profile defined in
-                          ~/.m2/settings.xml for this to work. The profile must point to
-                          the correct signing key
-                          -->
-                        <releaseProfiles>mvn-project-default.sign</releaseProfiles>
-                        <useReleaseProfile>true</useReleaseProfile>
-                    </configuration>
-                </plugin>
+
 
             </plugins>
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <detectJavaApiLink />
+                    <detectLinks />
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>maven.central</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <!--
+                      You must have a "mvn-project-default.sign" profile defined in
+                      ~/.m2/settings.xml for this to work. The profile must point to
+                      the correct signing key
+                      -->
+                    <releaseProfiles>mvn-project-default.sign</releaseProfiles>
+                    <useReleaseProfile>true</useReleaseProfile>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-component-metadata</artifactId>
