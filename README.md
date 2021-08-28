@@ -28,9 +28,9 @@ test -z "$MVN_HOME" && MVN_HOME="$(mvn -q org.apache.maven.plugins:maven-help-pl
 mvn -X org.apache.maven.plugins:maven-dependency-plugin:3.1.2:copy \
  -Dartifact=codes.vps:mvn-project-default:RELEASE:jar\
  -DoutputDirectory=. \
- -Dmdep.stripClassifier=true -Dmdep.stripVersion=true ;
-
-sudo mv mvn-project-default.jar "$MVN_HOME/lib/ext" 
+ -Dmdep.stripClassifier=true -Dmdep.stripVersion=true &&
+sudo mkdir -p "$MVN_HOME/lib/ext" && 
+sudo mv mvn-project-default.jar "$MVN_HOME/lib/ext/" 
 )
 ```
 
