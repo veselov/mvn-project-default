@@ -22,15 +22,14 @@ extension directory. There is no way to register the extension otherwise,
 as that can also only be done using project configuration.
 
 ```shell
-(
-test -z "$M2_HOME" && M2_HOME="$(mvn -q org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -DforceStdout -Dexpression=maven.home)";
-
+( \
+test -z "$M2_HOME" && M2_HOME="$(mvn -q org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -DforceStdout -Dexpression=maven.home)"; \
 mvn -X org.apache.maven.plugins:maven-dependency-plugin:3.1.2:copy \
  -Dartifact=codes.vps:mvn-project-default:RELEASE:jar\
  -DoutputDirectory=. \
  -Dmdep.stripClassifier=true -Dmdep.stripVersion=true &&
 sudo mkdir -p "$M2_HOME/lib/ext" && 
-sudo mv mvn-project-default.jar "$M2_HOME/lib/ext/" 
+sudo mv mvn-project-default.jar "$M2_HOME/lib/ext/" \
 )
 ```
 
